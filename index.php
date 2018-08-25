@@ -6,7 +6,7 @@
 
 	<head>
 
-		<title>U:HACKADEMIA</title>
+		<title>U:HACK Tech Up Agri</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="assets/images/uhac.ico" type="image/ico" sizes="32x32">
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -65,21 +65,21 @@
 		    	if($('#input-container').val() != ""){
 			        //ajax request
 			        $.ajax({
-					 	method: "POST",
-					 	url: "database/create_judge.php",
-					 	data: {
-					 		judge_name: $('#input-container').val(),
-					 		event_id: "1"
-					 	}
-					})
-					.done(function( data ) {
-					    $(location).attr('href', 'scoresheet.php');
-					})
-					.fail(function(xhr, textStatus, errorThrown) {
-						alert(errorThrown.filename);
-				        alert(xhr.responseText);
-				    });
-		    	}
+							 	method: "POST",
+							 	url: "database/create_judge.php",
+							 	data: {
+							 		judge_name: $('#input-container').val(),
+							 		event_id: "1"
+							 	}
+							})
+							.done(function( data ) {
+							  $(location).attr('href', 'scoresheet.php');
+							})
+							.fail(function(xhr, textStatus, errorThrown) {
+								alert(errorThrown.filename);
+						    alert(xhr.responseText);
+						  });
+				   }
 		    });
 		});
 	</script>

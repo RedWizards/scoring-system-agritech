@@ -4,7 +4,7 @@
 
 	<head>
 
-		<title>U:HACKADEMIA</title>
+		<title>U:HACK Tech Up Agri</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="assets/images/uhac.ico" type="image/ico" sizes="32x32">
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
 					<div ng-repeat="team in teams">
 
 						<button type="button" class="btn btn-default team-btn" ng-click="setScore(team)" ng-hide="activeNow">
-							<span id="btn-team-name" class="pull-left">{{team.team_name | uppercase}}</span> 
+							<span id="btn-team-name" class="pull-left">{{team.team_name | uppercase}}</span>
 							<span id="btn-team-score" class="pull-right"><b>{{team.total}} %</b></span>
 						</button>
 
@@ -84,7 +84,7 @@
 		<div id="footer" class="text-center">
 			<br/>
 		</div>
-			
+
 	</body>
 	<script src="assets/js/jquery.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
