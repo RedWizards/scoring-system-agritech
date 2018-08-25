@@ -62,11 +62,6 @@
 	<script src="../assets/js/jquery.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-			function zeroPad(num, places) {
-				var zero = places - num.toString().length + 1;
-				return Array(+(zero > 0 && zero)).join("0") + num;
-			}
-
 		$("#reg-form").submit(function(e) {
 			e.preventDefault(); // avoid to execute the actual submit of the form.
 
@@ -76,7 +71,7 @@
 
 				for(x=1; x<=count; x++){
 
-					formData = 'team_name=Team+' + zeroPad(x, 2);  + '&project_name=+&project_type=+&short_desc=+&long_desc=+';
+					formData = 'team_name=Team+' + x + '&project_name=+&project_type=+&short_desc=+&long_desc=+';
 
 					$.ajax({
 		        type: "POST",
