@@ -29,7 +29,7 @@
                 <a href="index.php"><button id="back"><span class="glyphicon glyphicon-chevron-left"></span> BACK</button></a>
             </span>
             <br/><br/>
-            <h2 class="text-center">ORDER OF <strong>PITCHING</strong></h2>
+            <h2 class="text-center"><strong>TEAMS</strong></h2>
             <br/>
                 
             <div class="col-md-offset-3 col-md-6" id="teams-output">

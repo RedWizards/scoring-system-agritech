@@ -25,20 +25,25 @@
 		<div class="sheet-container" ng-controller="sheet-ctrl" ng-init="init()">
 
 			<br/>
-			<div ng-hide="activeNow">
+			<div ng-hide="activeNow" class="py-3">
 				<h3 id="team-list" class="text-center"><b>TEAM LIST</b></h3>
-				<br/>
 			</div>
 
 			<div class="row justify-content-center no-padding no-margin pb-5">
 				<div class="col-lg-6 col-md-7 col-sm-10 col-xs-10">
 					<div ng-repeat="team in teams">
 
-						<button type="button" class="btn btn-default team-btn" ng-click="setScore(team)" ng-hide="activeNow">
-							<span id="btn-team-name" class="pull-left">{{team.team_name | uppercase}}</span>
-							<span id="btn-team-score" class="pull-right"><b>{{team.total}} %</b></span>
-						</button>
-
+						<div ng-hide="activeNow">
+							<button type="button" class="btn btn-default team-btn" ng-click="setScore(team)" ng-hide="team.hasScore">
+								<span id="btn-team-name" class="pull-left">{{team.team_name | uppercase}}</span>
+								<span id="btn-team-score" class="pull-right"><b>{{team.total}} %</b></span>
+							</button>
+							<button type="button" class="btn btn-default team-btn scored" ng-click="setScore(team)" ng-show="team.hasScore">
+								<span id="btn-team-name" class="pull-left">{{team.team_name | uppercase}}</span>
+								<span id="btn-team-score" class="pull-right"><b>{{team.total}} %</b></span>
+							</button>
+						</div>
+						
 						<div ng-show="team.isActive">
 							<button id="view-btn" ng-click="closeTeam(team)"><span class="fa fa-chevron-left"></span> View All Teams</button>
 							<br/><br/>
@@ -74,7 +79,7 @@
 
 					</div>
 				</div>
-				<div class="col-12 text-center"> 
+				<div class="col-12 text-center my-3" ng-show="teamScores == teams.length"> 
 					<a href="./helpers/logout.php" ng-hide="activeNow"><button id="done-btn" class="text-center">DONE</button></a>
 				</div>
 			</div>
@@ -91,5 +96,12 @@
 	<script src="assets/js/popper.min.js"></script>
 	<script src="assets/js/judge-view.js"></script>
 	<script src="assets/js/judge-scoresheet.js"></script>
+	<script type="text/javascript">
+		// Disable back action
+		history.pushState(null, document.title, location.href);
+		window.addEventListener('popstate', function (event) {
+			history.pushState(null, document.title, location.href);
+		});
+	</script>
 
 </html>

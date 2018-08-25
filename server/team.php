@@ -63,6 +63,7 @@
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$("#reg-form").submit(function(e) {
+
 			function zeroPad(num, places) {
 			  var zero = places - num.toString().length + 1;
 			  return Array(+(zero > 0 && zero)).join("0") + num;
@@ -72,39 +73,38 @@
 
 		    var url = "../database/register_team.php"; // the script where you handle the form input.
 
-				var count =  $("#teamNo").val();
+			var count =  $("#teamNo").val();
 
-				for(x=1; x<=count; x++){
+			for(x=1; x<=count; x++){
 
-					formData = 'team_name=Team+' + zeroPad(x,2) + '&project_name=+&project_type=+&short_desc=+&long_desc=+';
+				formData = 'team_name=Team+' + zeroPad(x,2) + '&project_name=+&project_type=+&short_desc=+&long_desc=+';
 
-					$.ajax({
-		        type: "POST",
-		        url: url,
-		        data: formData, // serializes the form's elements.
+				$.ajax({
+			        type: "POST",
+			        url: url,
+			        data: formData, // serializes the form's elements.
 			    }).done(function(data){
 
 			    	formData = formData + "&team_id=" + JSON.parse(data).id + "&event_id=1";
-
-						$.ajax({
-			        type: "POST",
-			        url: '../database/add_project.php',
-			        data: formData , // serializes the form's elements.
+					$.ajax({
+				        type: "POST",
+				        url: '../database/add_project.php',
+				        data: formData , // serializes the form's elements.
 				    }).done(function(data){
-							alert('Successfully added Team');
-							$("#reg-form").trigger("reset");
-						}).fail(function(xhr, textStatus, errorThrown) {
-							console.log(textStatus);
-							console.log(errorThrown);
-					    console.log(xhr.responseText);
-						});
-
+						alert('Successfully added Team');
+						$("#reg-form").trigger("reset");
 					}).fail(function(xhr, textStatus, errorThrown) {
 						console.log(textStatus);
 						console.log(errorThrown);
-				    console.log(xhr.responseText);
+				    	console.log(xhr.responseText);
 					});
-				}
+
+				}).fail(function(xhr, textStatus, errorThrown) {
+					console.log(textStatus);
+					console.log(errorThrown);
+			    	console.log(xhr.responseText);
+				});
+			}
 
 		});
 	</script>

@@ -4,7 +4,7 @@ app.controller('sheet-ctrl', ['$scope' , 'Session', function($scope, Session) {
 
 	$scope.activeNow =  false;
 	$scope.isActive = false;			
-	$scope.scoresAllSet = false;			
+	$scope.teamScores = 0;	
 
 	$scope.init = function(){
 		Session.then(function(response){
@@ -20,6 +20,13 @@ app.controller('sheet-ctrl', ['$scope' , 'Session', function($scope, Session) {
 			})
 			.done(function(data){
 				$scope.teams = data;
+				for(var i = 0; i < data.length; i++) {
+					$scope.teams[i].hasScore = false;
+					if($scope.teams[i].total) {
+						$scope.teams[i].hasScore = true;
+					}
+				}
+				$scope.checkScores();
 				$scope.$apply();
 			})
 			.fail(function(xhr, textStatus, errorThrown) {
@@ -75,13 +82,15 @@ app.controller('sheet-ctrl', ['$scope' , 'Session', function($scope, Session) {
 
 		if(success == true){
 			alert("Scores submitted!");
-			$scope.teamsScores += 1;			
+			// $scope.teamScores += 1;	
+			team.hasScore = true;
 			$scope.closeTeam(team);
-
 		}else{
 			alert("Some of the scores are not submitted.\nPlease try again with a valid input.");
 			// window.location.href = './scoresheet.php';
 		}
+		$scope.checkScores();
+
 	}		
 	
 	$scope.updateScore = function(team) {
@@ -99,6 +108,15 @@ app.controller('sheet-ctrl', ['$scope' , 'Session', function($scope, Session) {
 	$scope.closeTeam = function(team) {
 		team.isActive = false;
 		$scope.activeNow = false;
+	}
+
+	$scope.checkScores = function() {
+		$scope.teamScores = 0;
+		for(i = 0; i < $scope.teams.length; i++) {
+			if($scope.teams[i].hasScore) {
+				$scope.teamScores++;
+			}
+		}
 	}
 
 }]);

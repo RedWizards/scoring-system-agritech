@@ -225,18 +225,19 @@ input {
 
 #register-button {
 	color: #fff;
-	background-color: #0e0058;
+	/*background-color: #0e0058;*/
+	background-color: #ff8b00;
 	border:  solid 2px #fff;
 	width:  120px;
 	transition: background-color 0.5s ease;
 }
 
 #register-button:hover {
-	background-color: #3923ab;
+	background-color: #f89b00;
 }
 
 #register-button:focus {
-	background-color: #1b0688;
+	background-color: #ff8b00;
 }
 
 #input-container {
@@ -392,7 +393,7 @@ header {
 	margin: 0;
 	color: #fff;
 }
-
+/*
 #done-btn{
 	margin-top: 50px;
 	height: 50px;
@@ -412,17 +413,17 @@ header {
 #done-btn:focus {
 	background-color: #1b0688;
 }
-
+*/
+/*
 .team-btn {
 	width: 100%;
 	height: 70px;
 	padding: 0 30px;
 	border: solid 3px #564c89;
-	/*border: solid 3px #3923ab;*/
+	
 	transition: all 0.5s ease;
 	margin: 10px 0;
 	color: #3923ab;
-	/*color: #564c89;*/
 	background-color: #fff;
 }
 
@@ -437,6 +438,7 @@ header {
 	border-color: #1b0688;
 	color: #fff;
 }
+*/
 
 .btn-team-row {
 	padding: 0 20px;
@@ -489,7 +491,7 @@ header {
 	padding: 0 15px;
 	margin: 20px 0;
 }*/
-
+/*
 #submit-btn{
 	margin-top: 30px;
 	border-radius: 5px;
@@ -509,6 +511,7 @@ header {
 #submit-btn:focus {
 	background-color: #1b0688;
 }
+*/
 
 /* Done judging style */
 
@@ -658,4 +661,73 @@ table {
 
 .criteria-desc {
 	font-size: 12px;
+}
+
+.team-btn {
+	width: 100%;
+	height: 70px;
+	padding: 0 30px;
+	border: solid 3px #020202;
+	transition: all 0.5s ease;
+	margin: 10px 0;
+	color: #020202;
+	background-color: #fff;
+}
+
+.team-btn:hover {
+	background-color: #555;
+	border-color: #555;
+	color: #fff;
+}
+
+.team-btn:focus {
+	background-color: #020202;
+	border-color: #020202;
+	color: #fff;
+}
+
+.scored {
+	background-color: #020202;
+	border-color: #020202;
+	color: #fff;
+}
+
+#done-btn{
+	/*margin-top: 50px;*/
+	height: 50px;
+	color: #fff;
+	background-color: #ff8b00;
+	border:  solid 2px #fff;
+	width:  120px;
+	transition: background-color 0.5s ease;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#done-btn:hover {
+	background-color: #f89b00;
+}
+
+#done-btn:focus {
+	background-color: #ff8b00;
+}
+
+#submit-btn{
+	margin-top: 30px;
+	border-radius: 5px;
+	height: 50px;
+	color: #fff;
+	background-color: #ff8b00;
+	border:  solid 2px #fff;
+	width:  100%;
+	transition: background-color 0.5s ease;
+	cursor: pointer;
+}
+
+#submit-btn:hover {
+	background-color: #f89b00;
+}
+
+#submit-btn:focus {
+	background-color: #ff8b00;
 }
