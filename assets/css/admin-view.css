@@ -1,0 +1,152 @@
+html, body {
+	height:100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+	font-family: Helvetica;
+	
+	background: #fff;
+}
+
+header {
+/*	margin: 0;
+	padding: 14px 0 0 0;
+	height: 50px;
+	background-color: #564c89;
+	background-image: url("../images/header.png");*/
+	margin: 0;
+	padding: 5px 0;
+	/*height: 70px;*/
+	background-color: #564c89;
+	border-top: solid 5px #ff8b00;
+}
+
+#footer {
+	margin: 0;
+	padding: 5px 0;
+	background-color: #564c89;
+	border-bottom: solid 5px #ff8b00;
+}
+
+#scoresheet-name {
+	margin: 0;
+	color: #fff;
+}
+
+.row {
+	margin: 0;
+	padding: 20px 0;
+	width: 100%;
+	background-color: #fff;
+}
+
+.inside-option {
+	padding-top: 50%;
+	height: 250px;
+	background-color: #fff;
+	color: #ff8b00;
+	border: solid 2px #ff8b00;
+	transition: all 0.5s ease;
+	margin: 5px;
+}
+
+.inside-option.logout-box {
+	padding-top: 50%;
+	height: 250px;
+	background-color: #dfdfdf;
+	color: red;
+	border: solid 2px red;
+	transition: all 0.5s ease;
+	margin: 5px;
+}
+
+.inside-option:hover {
+	color: #fff;
+	background-color: #564c89;
+	border: solid 2px #564c89;
+}
+
+.inside-option.logout-box:hover {
+	color: #fff;
+	background-color: red;
+	border: solid 2px red;
+}
+
+.option-outline {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+span.option-title {
+	margin-top: 100px;
+}
+
+#judges-list {
+	height: 300px;
+	overflow: auto;
+}
+
+#export-btn {
+	height: 50px;
+	color: #fff;
+	background-color: #0e0058;
+	border:  solid 2px #fff;
+	width:  120px;
+	transition: background-color 0.5s ease;
+}
+
+#export-btn:hover {
+	background-color: #3923ab;
+}
+
+#export-btn:focus {
+	background-color: #1b0688;
+}
+
+#submit-team {
+	height: 50px;
+	color: #fff;
+	background-color: #0e0058;
+	border:  solid 2px #fff;
+	width:  120px;
+	transition: background-color 0.5s ease;
+}
+
+#submit-team:hover {
+	background-color: #3923ab;
+}
+
+#submit-team:focus {
+	background-color: #1b0688;
+}
+
+.input-team {
+	height: 50px;
+	border-radius: 0;
+}
+
+#back {
+	height: 50px;
+	color: #fff;
+	background-color: #ff8b00;
+	border:  solid 2px #fff;
+	width:  120px;
+	transition: background-color 0.5s ease;
+}
+
+#back:hover {
+	background-color: #f08000;
+}
+
+#back:focus {
+	background-color: #f08500;
+}
