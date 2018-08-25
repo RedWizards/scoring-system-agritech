@@ -1,2 +1,1 @@
-# scoring-system-4
-Animo Hackathon
+# scoring-system-5
