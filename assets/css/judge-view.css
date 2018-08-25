@@ -5,12 +5,13 @@ html, body, #wrapper {
     padding: 0;
     border: 0;
 	font-family: Helvetica;
-
+	/*
 	background: -webkit-radial-gradient(center, #BF4D00, #E52A00);
 	background: -moz-radial-gradient(center, #BF4D00, #E52A00);
 	background: -o-radial-gradient(center, #BF4D00, #E52A00);
 	background: -ms-radial-gradient(center, #BF4D00, #E52A00);
-	background: radial-gradient(center, #BF4D00, #E52A00);
+	background: radial-gradient(center, #BF4D00, #E52A00);*/
+	background-color: #000;
 }
 
 /* Judge Landing Style */
@@ -262,12 +263,17 @@ input {
         -o-transition:      width 500ms ease;
         -webkit-transition: width 500ms ease;
         */
-				background: #000;
+				// background: #000;
  	/* background: -webkit-radial-gradient(center, #BF4D00, #E52A00);
 	background: -moz-radial-gradient(center, #BF4D00, #E52A00);
 	background: -o-radial-gradient(center, #BF4D00, #E52A00);
 	background: -ms-radial-gradient(center, #BF4D00, #E52A00);
 	background: radial-gradient(center, #BF4D00, #E52A00); */
+
+	background: -moz-radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+	background: -o-radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+	background: -ms-radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+	background-image: radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
 
 /*	height: 100%;
     width: 100%;
@@ -351,7 +357,8 @@ header {
 	margin: 0;
 	padding: 5px 0;
 	/*height: 70px;*/
-	background-color: #564c89;
+	/*background-color: #564c89;*/
+	background-color: #000;
 	border-top: solid 5px #ff8b00;
 	/*background-image: url("../images/header.png");*/
 }
@@ -367,6 +374,7 @@ header {
 
 .row-section {
 	width: 100%;
+	height: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -374,9 +382,10 @@ header {
 #footer {
 	margin: 0;
 	padding: 5px 0;
-	background-color: #564c89;/*
-	color: #fff;*/
-	border-bottom: solid 5px #ff8b00;
+	/*background-color: #564c89;*/
+	background-color: #000;
+	/*color: #fff;*/
+	/*border-bottom: solid 5px #ff8b00;*/
 }
 
 #scoresheet-name {
@@ -555,8 +564,8 @@ input{
 }
 
 #criteria-box {
-	margin: 10px 0;
-	height: 70px;
+	/*height: 70px;*/
+	padding-top: 30px;
 	width: 100%;
 	border-bottom: solid 1px #efefef;
 }
@@ -579,7 +588,7 @@ input{
 
 .sheet-container {
 	background-color: #fff;
-	height: 100%;
+	/*height: 100%;*/
 	margin: 0;
 	padding: 0;
 }
@@ -633,4 +642,12 @@ table {
 	width:  100%;
 	transition: background-color 0.5s ease;
 	cursor: default;
+}
+
+.criteria-name {
+	font-size: 15px;
+}
+
+.criteria-desc {
+	font-size: 12px;
 }

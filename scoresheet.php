@@ -19,7 +19,7 @@
 	<body ng-app="scoring-sheet">
 
 		<header class="text-center">
-			<img src="assets/images/scoring-logo-sm.png" class="img-responsive" id="scoring-logo" width="200px" height="45px">
+			<img src="assets/images/agritech-sm-logo.png" class="img-responsive" id="scoring-logo" width="130px" height="40px">
 		</header>
 
 		<div class="sheet-container" ng-controller="sheet-ctrl" ng-init="init()">
@@ -39,12 +39,12 @@
 							<span id="btn-team-score" class="pull-right"><b>{{team.total}} %</b></span>
 						</button>
 
-						<div ng-show="team.isActive">
+						<div ng-show="team.isActive" class="pb-5">
 							<button id="view-btn" ng-click="closeTeam(team)"><span class="fa fa-chevron-left"></span> View All Teams</button>
 							<br/><br/>
 							<div class="text-center">
-								<h3><strong>{{team.project_name | uppercase}}</strong></h3>
-								<h5 class="team-name"><small>by</small> <strong>{{team.team_name | uppercase}}</strong></h5>
+								<h3><strong>{{team.team_name | uppercase}}</strong></h3>
+								<!-- <h5 class="team-name"><small>by</small> <strong></strong></h5> -->
 							</div>
 							<br/>
 							<form id="main-sheet-{{team.team_id}}">
@@ -54,11 +54,11 @@
 										<td class="text-right score-lbl">SCORE<td>
 									</tr>
 									<tr ng-repeat="criteria in team.criteria" id="criteria-box">
-										<td class="criteria">
-											<span><b>{{criteria.criteria_desc}}</b></span><br/>
-											<small><i>{{criteria.criteria_longdesc}}</i></small>
+										<td class="criteria py-3">
+											<span class="criteria-name"><b>{{criteria.criteria_desc}}</b></span><br/>
+											<span class="criteria-desc"><i>{{criteria.criteria_longdesc}}</i></span>
 										</td>
-										<td class="text-right score">
+										<td class="text-right score py-3">
 											<input type="number" class="text-right" name="criteria-team{{team.team_id}}-criteria{{criteria.criteria_id}}" placeholder="0" min="1" max="{{criteria.criteria_weight}}" style="width: 50%;" ng-model="criteria.score_details.score" ng-change="updateScore(team)" value="{{criteria.score_details.score}}"/><span> / {{criteria.criteria_weight}}</span>
 										</td>
 									</tr>
@@ -73,10 +73,9 @@
 
 					</div>
 				</div>
-			</div>
-
-			<div class="text-center" ng-hide="activeNow">
-				<a href="./helpers/logout.php"><button id="done-btn" class="text-center">DONE</button></a>
+				<div class="col-12 text-center mb-5" ng-hide="activeNow">
+					<a href="./helpers/logout.php"><button id="done-btn" class="text-center">DONE</button></a>
+				</div>
 			</div>
 
 		</div>

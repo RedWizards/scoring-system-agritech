@@ -21,7 +21,7 @@
 			<div class="container cover-content">
 				<div class="row align-items-center justify-content-center row-content">
 					<div class="col-lg-6 col-md-6 col-sm-10 col-xs-10 text-center">
-						<img src="assets/images/agritech.png" class="img-responsive" id="scoring-logo" width="100%" height="100%">
+						<img src="assets/images/agritech-logo.png" class="img-responsive" id="scoring-logo" width="100%" height="100%">
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@
 						<br/><br/><br/><br/><br/>
 						<h1 id="greet">THANK YOU FOR JUDGING</h1>
 						<br/>
-						<img src="assets/images/scoring-logo.png" class="img-responsive" id="scoring-logo" width="200px" height="80px">
+						<img src="assets/images/agritech-logo.png" class="img-responsive" id="scoring-logo" width="200px" height="60px">
 					</div>
 				</div>
 			</div>

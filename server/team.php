@@ -31,12 +31,22 @@
 					<a href="index.php"><button id="back"><span class="glyphicon glyphicon-chevron-left"></span> BACK</button></a>
 				</span>
 				<br/><br/>
-				<h2 class="text-center">ADD <strong>TEAM</strong></h2>
+				<h2 class="text-center">ADD <strong>TEAMS</strong></h2>
 
 				<br/><br/>
 
 				<div class="col-md-offset-3 col-md-6">
 
+					<div class="text-center">
+						<b style="font-size: 15px; margin-right: 20px;">Input Number of Teams <i class="fa fa-chevron-right"></i></b>
+						<input type="number" name="teamNo" id="teamNo" min="0" class="input-team"  placeholder="0" />
+					</div>
+					<br/><br/>
+
+					<!--
+						 COMMENT THIS FORM BELOW
+						 WHEN ADDING BY TEAM NUMBER IS OKAY
+					 -->
 					<div>
 						<form id="reg-form">
 							<div>
