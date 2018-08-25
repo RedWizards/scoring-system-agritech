@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2017 at 11:07 AM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Aug 25, 2018 at 05:00 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: scoring-backup
+-- Database: `scoring`
 --
 
 DELIMITER $$
@@ -301,7 +301,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `view_teams` (IN `in_event_id` INT(1
     WHERE 
 		p.event_id = in_event_id
     AND t.team_id = p.team_id
-    ORDER BY p.pitch_order;
+    ORDER BY t.team_name;
 END$$
 
 DELIMITER ;
@@ -309,16 +309,26 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table criteria
+-- Table structure for table `criteria`
 --
 
-CREATE TABLE criteria (
-  criteria_id int(11) NOT NULL,
-  event_id int(11) NOT NULL,
-  criteria_desc varchar(160) DEFAULT NULL,
-  criteria_weight int(11) DEFAULT NULL,
-  criteria_longdesc varchar(800) DEFAULT NULL
+CREATE TABLE `criteria` (
+  `criteria_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `criteria_desc` varchar(160) DEFAULT NULL,
+  `criteria_weight` int(11) DEFAULT NULL,
+  `criteria_longdesc` varchar(800) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `criteria`
+--
+
+INSERT INTO `criteria` (`criteria_id`, `event_id`, `criteria_desc`, `criteria_weight`, `criteria_longdesc`) VALUES
+(6, 1, 'Demo', 30, 'Is the project working? What is the level of technical difficulty?'),
+(7, 1, 'Portability', 25, 'To what extent can the project be replicated or adapted by different sectors and business community.'),
+(8, 1, 'Sustainability', 20, 'Is there a feasible model for ongoing development of the project and does the team show a strong desire to see the project through'),
+(9, 1, 'Over all quality', 25, '');
 
 -- --------------------------------------------------------
 
@@ -327,100 +337,100 @@ CREATE TABLE criteria (
 --
 
 CREATE TABLE `event` (
-  event_id int(11) NOT NULL,
-  event_name varchar(45) DEFAULT NULL,
-  event_host varchar(45) DEFAULT NULL,
-  event_desc varchar(800) DEFAULT NULL,
-  event_date datetime DEFAULT NULL
+  `event_id` int(11) NOT NULL,
+  `event_name` varchar(45) DEFAULT NULL,
+  `event_host` varchar(45) DEFAULT NULL,
+  `event_desc` varchar(800) DEFAULT NULL,
+  `event_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (event_id, event_name, event_host, event_desc, event_date) VALUES
-(1, 'UHAC Cebu', 'Unionbank', 'Another project of the Bank to find the most creative and innovative solutions in the digital world.', '2017-07-16 00:00:00');
+INSERT INTO `event` (`event_id`, `event_name`, `event_host`, `event_desc`, `event_date`) VALUES
+(1, 'UHAC Tech UP Agri', 'Unionbank', 'Another project of the Bank to find the most creative and innovative solutions in the digital world.', '2017-07-16 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table judge
+-- Table structure for table `judge`
 --
 
-CREATE TABLE judge (
-  judge_id int(11) NOT NULL,
-  event_id int(11) DEFAULT NULL,
-  judge_name varchar(45) DEFAULT 'Anonymous'
+CREATE TABLE `judge` (
+  `judge_id` int(11) NOT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `judge_name` varchar(45) DEFAULT 'Anonymous'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table participants
+-- Table structure for table `participants`
 --
 
-CREATE TABLE participants (
-  participant_id int(10) UNSIGNED NOT NULL,
-  team_id int(11) DEFAULT NULL,
-  participant_firstName varchar(45) DEFAULT NULL,
-  participant_lastName varchar(45) DEFAULT NULL,
-  participant_email varchar(45) DEFAULT NULL,
-  participant_contactNo varchar(45) DEFAULT NULL
+CREATE TABLE `participants` (
+  `participant_id` int(10) UNSIGNED NOT NULL,
+  `team_id` int(11) DEFAULT NULL,
+  `participant_firstName` varchar(45) DEFAULT NULL,
+  `participant_lastName` varchar(45) DEFAULT NULL,
+  `participant_email` varchar(45) DEFAULT NULL,
+  `participant_contactNo` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table project
+-- Table structure for table `project`
 --
 
-CREATE TABLE project (
-  project_id int(11) NOT NULL,
-  event_id int(11) DEFAULT NULL,
-  team_id int(11) DEFAULT NULL,
-  project_name varchar(45) DEFAULT NULL,
-  project_type varchar(45) DEFAULT NULL,
-  short_desc varchar(160) DEFAULT NULL,
-  long_desc varchar(800) DEFAULT NULL,
-  pitch_order int(10) NOT NULL
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `team_id` int(11) DEFAULT NULL,
+  `project_name` varchar(45) DEFAULT NULL,
+  `project_type` varchar(45) DEFAULT NULL,
+  `short_desc` varchar(160) DEFAULT NULL,
+  `long_desc` varchar(800) DEFAULT NULL,
+  `pitch_order` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table remarks
+-- Table structure for table `remarks`
 --
 
-CREATE TABLE remarks (
-  remarks_id int(11) NOT NULL,
-  judge_id int(11) DEFAULT NULL,
-  project_id int(11) DEFAULT NULL,
-  remark varchar(800) DEFAULT NULL
+CREATE TABLE `remarks` (
+  `remarks_id` int(11) NOT NULL,
+  `judge_id` int(11) DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  `remark` varchar(800) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table scores
+-- Table structure for table `scores`
 --
 
-CREATE TABLE scores (
-  score_id int(11) NOT NULL,
-  judge_id int(11) DEFAULT NULL,
-  criteria_id int(11) DEFAULT NULL,
-  project_id int(11) DEFAULT NULL,
-  score double DEFAULT '0'
+CREATE TABLE `scores` (
+  `score_id` int(11) NOT NULL,
+  `judge_id` int(11) DEFAULT NULL,
+  `criteria_id` int(11) DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  `score` double DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table team
+-- Table structure for table `team`
 --
 
-CREATE TABLE team (
-  team_id int(11) NOT NULL,
-  team_name varchar(45) DEFAULT NULL
+CREATE TABLE `team` (
+  `team_id` int(11) NOT NULL,
+  `team_name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -428,150 +438,158 @@ CREATE TABLE team (
 --
 
 --
--- Indexes for table criteria
+-- Indexes for table `criteria`
 --
-ALTER TABLE criteria
-  ADD PRIMARY KEY (criteria_id),
-  ADD KEY event_idx (event_id);
+ALTER TABLE `criteria`
+  ADD PRIMARY KEY (`criteria_id`),
+  ADD KEY `event_idx` (`event_id`);
 
 --
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (event_id);
+  ADD PRIMARY KEY (`event_id`);
 
 --
--- Indexes for table judge
+-- Indexes for table `judge`
 --
-ALTER TABLE judge
-  ADD PRIMARY KEY (judge_id),
-  ADD KEY event_idx (event_id);
+ALTER TABLE `judge`
+  ADD PRIMARY KEY (`judge_id`),
+  ADD KEY `event_idx` (`event_id`);
 
 --
--- Indexes for table participants
+-- Indexes for table `participants`
 --
-ALTER TABLE participants
-  ADD PRIMARY KEY (participant_id),
-  ADD KEY participant_team_idx (team_id);
+ALTER TABLE `participants`
+  ADD PRIMARY KEY (`participant_id`),
+  ADD KEY `participant_team_idx` (`team_id`);
 
 --
--- Indexes for table project
+-- Indexes for table `project`
 --
-ALTER TABLE project
-  ADD PRIMARY KEY (project_id),
-  ADD KEY project_team_idx (team_id),
-  ADD KEY project_event_idx (event_id);
+ALTER TABLE `project`
+  ADD PRIMARY KEY (`project_id`),
+  ADD KEY `project_team_idx` (`team_id`),
+  ADD KEY `project_event_idx` (`event_id`);
 
 --
--- Indexes for table remarks
+-- Indexes for table `remarks`
 --
-ALTER TABLE remarks
-  ADD PRIMARY KEY (remarks_id),
-  ADD KEY remarks_judge_idx (judge_id),
-  ADD KEY remarks_project_idx (project_id);
+ALTER TABLE `remarks`
+  ADD PRIMARY KEY (`remarks_id`),
+  ADD KEY `remarks_judge_idx` (`judge_id`),
+  ADD KEY `remarks_project_idx` (`project_id`);
 
 --
--- Indexes for table scores
+-- Indexes for table `scores`
 --
-ALTER TABLE scores
-  ADD PRIMARY KEY (score_id),
-  ADD KEY scores_judge_idx (judge_id),
-  ADD KEY scores_criteria_idx (criteria_id),
-  ADD KEY scores_project_idx (project_id);
+ALTER TABLE `scores`
+  ADD PRIMARY KEY (`score_id`),
+  ADD KEY `scores_judge_idx` (`judge_id`),
+  ADD KEY `scores_criteria_idx` (`criteria_id`),
+  ADD KEY `scores_project_idx` (`project_id`);
 
 --
--- Indexes for table team
+-- Indexes for table `team`
 --
-ALTER TABLE team
-  ADD PRIMARY KEY (team_id);
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`team_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table criteria
+-- AUTO_INCREMENT for table `criteria`
 --
-ALTER TABLE criteria
-  MODIFY criteria_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `criteria`
+  MODIFY `criteria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY event_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table judge
+-- AUTO_INCREMENT for table `judge`
 --
-ALTER TABLE judge
-  MODIFY judge_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `judge`
+  MODIFY `judge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table participants
+-- AUTO_INCREMENT for table `participants`
 --
-ALTER TABLE participants
-  MODIFY participant_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `participants`
+  MODIFY `participant_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table project
+-- AUTO_INCREMENT for table `project`
 --
-ALTER TABLE project
-  MODIFY project_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `project`
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table remarks
+-- AUTO_INCREMENT for table `remarks`
 --
-ALTER TABLE remarks
-  MODIFY remarks_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `remarks`
+  MODIFY `remarks_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table scores
+-- AUTO_INCREMENT for table `scores`
 --
-ALTER TABLE scores
-  MODIFY score_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `scores`
+  MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table team
+-- AUTO_INCREMENT for table `team`
 --
-ALTER TABLE team
-  MODIFY team_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `team`
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table criteria
+-- Constraints for table `criteria`
 --
-ALTER TABLE criteria
-  ADD CONSTRAINT criteria_event FOREIGN KEY (event_id) REFERENCES event (event_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `criteria`
+  ADD CONSTRAINT `criteria_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table judge
+-- Constraints for table `judge`
 --
-ALTER TABLE judge
-  ADD CONSTRAINT judge_event FOREIGN KEY (event_id) REFERENCES event (event_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `judge`
+  ADD CONSTRAINT `judge_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table participants
+-- Constraints for table `participants`
 --
-ALTER TABLE participants
-  ADD CONSTRAINT participant_team FOREIGN KEY (team_id) REFERENCES team (team_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `participants`
+  ADD CONSTRAINT `participant_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table project
+-- Constraints for table `project`
 --
-ALTER TABLE project
-  ADD CONSTRAINT project_event FOREIGN KEY (event_id) REFERENCES event (event_id) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT project_team FOREIGN KEY (team_id) REFERENCES team (team_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project`
+  ADD CONSTRAINT `project_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `project_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table remarks
+-- Constraints for table `remarks`
 --
-ALTER TABLE remarks
-  ADD CONSTRAINT remarks_judge FOREIGN KEY (judge_id) REFERENCES judge (judge_id) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT remarks_project FOREIGN KEY (project_id) REFERENCES project (project_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `remarks`
+  ADD CONSTRAINT `remarks_judge` FOREIGN KEY (`judge_id`) REFERENCES `judge` (`judge_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `remarks_project` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table scores
+-- Constraints for table `scores`
 --
-ALTER TABLE scores
-  ADD CONSTRAINT scores_criteria FOREIGN KEY (criteria_id) REFERENCES criteria (criteria_id) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT scores_judge FOREIGN KEY (judge_id) REFERENCES judge (judge_id) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT scores_project FOREIGN KEY (project_id) REFERENCES project (project_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `scores`
+  ADD CONSTRAINT `scores_criteria` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `scores_judge` FOREIGN KEY (`judge_id`) REFERENCES `judge` (`judge_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `scores_project` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
