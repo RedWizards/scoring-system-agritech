@@ -37,11 +37,6 @@
 
 				<div class="col-md-offset-3 col-md-6">
 
-					<div class="text-center">
-
-					</div>
-					<br/><br/>
-
 					<!--
 						 COMMENT THIS FORM BELOW
 						 WHEN ADDING BY TEAM NUMBER IS OKAY
