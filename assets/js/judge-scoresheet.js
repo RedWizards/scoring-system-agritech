@@ -89,7 +89,6 @@
 			team.total = 0;
 			for (var i = 0; i < team.criteria.length; i++) {
 				team.total += team.criteria[i].score_details.score;
-				// team.total += parseInt(team.criteria[i].score_details.score);
 			}
 		}
 		

@@ -30,7 +30,7 @@
 				<br/>
 			</div>
 
-			<div class="row justify-content-center no-padding no-margin">
+			<div class="row justify-content-center no-padding no-margin pb-5">
 				<div class="col-lg-6 col-md-7 col-sm-10 col-xs-10">
 					<div ng-repeat="team in teams">
 
@@ -39,7 +39,7 @@
 							<span id="btn-team-score" class="pull-right"><b>{{team.total}} %</b></span>
 						</button>
 
-						<div ng-show="team.isActive" class="pb-5">
+						<div ng-show="team.isActive">
 							<button id="view-btn" ng-click="closeTeam(team)"><span class="fa fa-chevron-left"></span> View All Teams</button>
 							<br/><br/>
 							<div class="text-center">
@@ -74,8 +74,8 @@
 
 					</div>
 				</div>
-				<div class="col-12 text-center mb-5" ng-hide="activeNow">
-					<a href="./helpers/logout.php"><button id="done-btn" class="text-center">DONE</button></a>
+				<div class="col-12 text-center"> 
+					<a href="./helpers/logout.php" ng-hide="activeNow"><button id="done-btn" class="text-center">DONE</button></a>
 				</div>
 			</div>
 
