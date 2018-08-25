@@ -75,7 +75,7 @@
 				var count =  $("#teamNo").val();
 
 				for(x=1; x<=count; x++){
-					
+
 					formData = 'team_name=Team+' + x + '&project_name=+&project_type=+&short_desc=+&long_desc=+';
 
 					$.ajax({
