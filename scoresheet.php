@@ -59,15 +59,16 @@
 											<span class="criteria-desc"><i>{{criteria.criteria_longdesc}}</i></span>
 										</td>
 										<td class="text-right score py-3">
-											<input type="number" class="text-right" name="criteria-team{{team.team_id}}-criteria{{criteria.criteria_id}}" placeholder="0" min="1" max="{{criteria.criteria_weight}}" style="width: 50%;" ng-model="criteria.score_details.score" ng-change="updateScore(team)" value="{{criteria.score_details.score}}"/><span> / {{criteria.criteria_weight}}</span>
+											<input type="number" class="text-right" name="criteria-team{{team.team_id}}-criteria{{criteria.criteria_id}}" placeholder="0" min="0" max="{{criteria.criteria_weight}}" style="width: 50%;" ng-model="criteria.score_details.score" ng-change="updateScore(team)" value="{{criteria.score_details.score}}"/><span> / {{criteria.criteria_weight}}</span>
 										</td>
 									</tr>
 								</table>
 								<br/>
 								<h3 class="pull-left"><strong>TOTAL </strong></h3>
 								<h3 class="pull-right"><strong>{{team.total}} %</strong></h3>
-								<input type="button" value="SUBMIT" id="submit-btn" ng-click="setScores(team)" ng-show="team.total"/>
-								<input type="button" value="SUBMIT" class="submit-btn-disabled" ng-hide="team.total" disabled/>
+								<input type="button" value="SUBMIT" id="submit-btn" ng-click="setScores(team)" />
+								<!-- <input type="button" value="SUBMIT" id="submit-btn" ng-click="setScores(team)" ng-show="team.total"/>
+								<input type="button" value="SUBMIT" class="submit-btn-disabled" ng-hide="team.total" disabled/> -->
 							</form>
 						</div>
 
