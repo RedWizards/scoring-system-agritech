@@ -37,44 +37,15 @@
 
 				<div class="col-md-offset-3 col-md-6">
 
-					<div class="text-center">
-						<b style="font-size: 15px; margin-right: 20px;">Input Number of Teams <i class="fa fa-chevron-right"></i></b>
-						<input type="number" name="teamNo" id="teamNo" min="0" class="input-team"  placeholder="0" />
-					</div>
-					<br/><br/>
-
 					<!--
 						 COMMENT THIS FORM BELOW
 						 WHEN ADDING BY TEAM NUMBER IS OKAY
 					 -->
 					<div>
 						<form id="reg-form">
-							<div>
-								<label for="team_name">Team Name </label>
-								<input type="text" name="team_name" placeholder="..." class="form-control input-team" required/>
-								<br/><br/>
-							</div>
-							<div>
-								<label for="project_name">Project Name </label>
-								<input type="text" name="project_name" placeholder="..." class="form-control input-team" required/>
-								<br/><br/>
-							</div>
-							<div>
-								<label for="project_type">Project Type</label>
-								<input type="text" name="project_type" placeholder="..." class="form-control input-team" required/>
-								<br/><br/>
-							</div>
-							<div>
-								<label for="short_desc">Short Description</label>
-								<textarea name="short_desc" placeholder="..." class="form-control input-team" required></textarea>
-								<br/><br/>
-							</div>
-							<div>
-								<label for="long_desc">Long Description</label>
-								<textarea name="long_desc" placeholder="..." class="form-control input-team" required></textarea>
-								<br/><br/>
-							</div>
-							<br/>
+							<b style="font-size: 15px; margin-right: 20px;">Input Number of Teams <i class="fa fa-chevron-right"></i></b>
+							<input type="number" name="teamNo" id="teamNo" min="0" class="input-team"  placeholder="0" />
+							<br/><br/><br/>
 							<div class="text-center">
 								<input type="submit" value="ADD TEAM" name="reg_team" id="submit-team" class="form-control btn btn-primary" />
 							</div>
@@ -85,7 +56,7 @@
 				</div>
 
 			</div>
-			
+
 	</body>
 
 	<script src="../assets/js/jquery.js"></script>
@@ -96,41 +67,41 @@
 
 		    var url = "../database/register_team.php"; // the script where you handle the form input.
 
-		    var formData = $("#reg-form").serialize();
+				var count =  $("#teamNo").val();
 
-		    $.ajax({
+				for(x=1; x<=count; x++){
+
+					formData = 'team_name=Team+' + x + '&project_name=+&project_type=+&short_desc=+&long_desc=+';
+
+					$.ajax({
 		        type: "POST",
 		        url: url,
 		        data: formData, // serializes the form's elements.
-		    })
-		    .done(function(data){
+			    }).done(function(data){
 
-		    	formData = formData + "&team_id=" + JSON.parse(data).id + "&event_id=1";
+			    	formData = formData + "&team_id=" + JSON.parse(data).id + "&event_id=1";
 
-				$.ajax({
+						$.ajax({
 			        type: "POST",
 			        url: '../database/add_project.php',
 			        data: formData , // serializes the form's elements.
-			    })
-			    .done(function(data){
-					alert('Successfully added Team');
-					$("#reg-form").trigger("reset");
-				})
-				.fail(function(xhr, textStatus, errorThrown) {
-					console.log(textStatus);
-					console.log(errorThrown);
+				    }).done(function(data){
+							alert('Successfully added Team');
+							$("#reg-form").trigger("reset");
+						}).fail(function(xhr, textStatus, errorThrown) {
+							console.log(textStatus);
+							console.log(errorThrown);
+					    console.log(xhr.responseText);
+						});
+
+					}).fail(function(xhr, textStatus, errorThrown) {
+						console.log(textStatus);
+						console.log(errorThrown);
 				    console.log(xhr.responseText);
-				});
+					});
+				}
 
-			})
-			.fail(function(xhr, textStatus, errorThrown) {
-				console.log(textStatus);
-				console.log(errorThrown);
-			    console.log(xhr.responseText);
-			});
-
-		    
 		});
 	</script>
 
-</html>	
+</html>
