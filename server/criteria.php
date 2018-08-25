@@ -34,11 +34,12 @@
 
             <div class="col-md-offset-1 col-md-5">
 
-                <h3 class="text-center">ADD CRITERIA</h3>
+                <h3 class="text-center">ADD CRITERIA</h3> 
+                <h4 class="text-center"><small><i>*After adding all the criterias, click "SUBMIT Button" <br/>located in the lower part of Event Criteria on panel</i></small></h4>                  
                 <br/>
                 
                 <form name="criteriaForm" ng-submit="addCriteria">
-
+                   
                     <div class="criteria_div">
                         <label for="criteria_name">Criteria Name</label><br/>
                         <input type="text" name="criteria_name" ng-model="new_name" id="criteria_name" required/>

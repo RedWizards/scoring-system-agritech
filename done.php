@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-		<div class="container cover-content">
+		<div class="container cover-content done-cover">
 			<div class="row align-items-center justify-content-center row-content">
 				<div class="col-lg-6 col-md-6 col-sm-9 col-xs-9 text-center">
 					<div class="text-center">

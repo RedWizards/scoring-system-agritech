@@ -572,6 +572,13 @@ input{
 
 /* UHACKADEMIA ADDITIONAL STYLES */
 
+.done-cover {
+	background: -moz-radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+	background: -o-radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+	background: -ms-radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+	background-image: radial-gradient(circle, #101010, #0d0d0d, #090909, #040404, #000000);
+}
+
 .cover-content, .row-content {
 	height: 100%;
 }
